@@ -13,6 +13,22 @@
 \newcommand{\pipcolor}{red}
 \newcommand{\fieldfill}{white}
 
+\newcommand{\piplocation}[2]{\filldraw[fill=\pipcolor] (#1,#2) circle (\pipsize);}
+
+\newcommand{\piplocationone}{\piplocation{0.25}{0.25}}
+\newcommand{\piplocationtwo}{\piplocation{0.50}{0.25}}
+\newcommand{\piplocationthree}{\piplocation{0.75}{0.25}}
+\newcommand{\piplocationfour}{\piplocation{0.25}{0.50}}
+\newcommand{\piplocationfive}{\piplocation{0.50}{0.50}}
+\newcommand{\piplocationsix}{\piplocation{0.75}{0.50}}
+\newcommand{\piplocationseven}{\piplocation{0.25}{0.75}}
+\newcommand{\piplocationeight}{\piplocation{0.50}{0.75}}
+\newcommand{\piplocationnine}{\piplocation{0.75}{0.75}}
+
+\newcommand{\spreadsix}{\piplocation{0.20}{0.20}\piplocation{0.20}{0.80}
+						\piplocation{0.80}{0.20}\piplocation{0.80}{0.80}
+						\piplocation{0.50}{0.20}\piplocation{0.50}{0.80}}
+
 \newcommand{\maindie}[2]{
 \ifthenelse{#2 = 0}{\renewcommand{\diecolor}{black}\renewcommand{\pipcolor}{black}\renewcommand{\fieldfill}{white}}{}%
 \ifthenelse{#2 = 1}{\renewcommand{\diecolor}{red}\renewcommand{\pipcolor}{red}\renewcommand{\fieldfill}{white}}{}%
@@ -20,53 +36,19 @@
 \ifthenelse{#2 = 3}{\renewcommand{\diecolor}{black}\renewcommand{\pipcolor}{white}\renewcommand{\fieldfill}{black}}{}%
 \begin{tikzpicture}
   \draw[very thick, rounded corners, \diecolor, fill=\fieldfill] (0,0) rectangle (1,1);
-  \ifthenelse{#1 = 1}{\filldraw[fill=\pipcolor] (0.50,0.50) circle (\pipsize);}{}%  
-  \ifthenelse{#1 = 2}{\filldraw[fill=\pipcolor] (0.25,0.25) circle (\pipsize);
-  					  \filldraw[fill=\pipcolor] (0.75,0.75) circle (\pipsize);}{}%
-  \ifthenelse{#1 = 3}{\filldraw[fill=\pipcolor] (0.25,0.25) circle (\pipsize);
-				      \filldraw[fill=\pipcolor] (0.75,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.50) circle (\pipsize);}{}%
-  \ifthenelse{#1 = 4}{\filldraw[fill=\pipcolor] (0.25,0.25) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.25,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.75,0.25) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.75,0.75) circle (\pipsize);}{}%
-  \ifthenelse{#1 = 5}{\filldraw[fill=\pipcolor] (0.25,0.25) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.25,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.75,0.25) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.75,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.50) circle (\pipsize);}{}%
-  \ifthenelse{#1 = 6}{\filldraw[fill=\pipcolor] (0.20,0.25) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.20,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.25) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.75) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.25) circle (\pipsize);}{}%
-	\ifthenelse{#1 = 7}{\filldraw[fill=\pipcolor] (0.20,0.20) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.20,0.80) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.20) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.80) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.80) circle (\pipsize);
-  					  \filldraw[fill=\pipcolor] (0.50,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.20) circle (\pipsize);}{}%	  
-	\ifthenelse{#1 = 8}{\filldraw[fill=\pipcolor] (0.20,0.20) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.20,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.20,0.80) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.20) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.80) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.80) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.20) circle (\pipsize);}{}%	  
-    \ifthenelse{#1 = 9}{\filldraw[fill=\pipcolor] (0.20,0.20) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.20,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.20,0.80) circle (\pipsize);
- 					  \filldraw[fill=\pipcolor] (0.20,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.20) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.80,0.80) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.80) circle (\pipsize);
-  					  \filldraw[fill=\pipcolor] (0.50,0.50) circle (\pipsize);
-					  \filldraw[fill=\pipcolor] (0.50,0.20) circle (\pipsize);}{}%	  
-    \ifthenelse{#1 = 0}{}{}%
+  \ifthenelse{#1 = 1}{\piplocationfive}{}%  
+  \ifthenelse{#1 = 2}{\piplocationone\piplocationnine}{}%
+  \ifthenelse{#1 = 3}{\piplocationone\piplocationfive\piplocationnine}{}%
+  \ifthenelse{#1 = 4}{\piplocationone\piplocationnine\piplocationthree\piplocationseven}{}%
+  \ifthenelse{#1 = 5}{\piplocationone\piplocationnine\piplocationthree\piplocationseven\piplocationfive}{}%
+  \ifthenelse{#1 = 6}{\piplocation{0.20}{0.25}\piplocation{0.20}{0.75}
+					  \piplocation{0.80}{0.25}\piplocation{0.80}{0.75}
+					  \piplocation{0.20}{0.50}\piplocation{0.80}{0.50}}{}%
+
+  \ifthenelse{#1 = 7}{\spreadsix\piplocationfive}{}%	  
+  \ifthenelse{#1 = 8}{\spreadsix\piplocation{0.20}{0.50}\piplocation{0.80}{0.50}}{}%	  
+  \ifthenelse{#1 = 9}{\spreadsix\piplocation{0.20}{0.50}\piplocation{0.80}{0.50}\piplocationfive}{}%
+  \ifthenelse{#1 = 0}{}{}%
 %    \ifthenelse{#1 = 0}{\draw[very thick, rounded corners, \diecolor, fill=\diecolor!20] (0,0) rectangle (1,1);}{}%  
 
 \end{tikzpicture}
