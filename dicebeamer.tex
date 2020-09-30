@@ -1,0 +1,97 @@
+\documentclass[17pt]{beamer}
+\usepackage{pdfpages}
+\usepackage{array}
+\usepackage{tikz}
+\setbeamertemplate{navigation symbols}{}    % turn off the navigation symbol
+\input{tikzdice.tex}
+
+\title{Beamer Example of \texttt{tikzdice.tex}}
+\subtitle{(Classical Probability Theme)}
+\author{Jesse Hamner}
+\institute{``All probabilities are 50\%. Either a thing \emph{will} happen, or it \emph{won't}.''}
+\date{September, 2020}
+
+\begin{document}
+
+\maketitle
+
+\frame{
+\frametitle{Example: Sample Space}
+Consider the experiment in which a red six-sided die and a blue six-sided die are rolled together. 
+
+\begin{enumerate}
+\item Use a pattern to help list the outcomes in the sample space. 
+\item List the outcomes in the event ``the sum of the numbers rolled on the two dice equals 6.''
+\end{enumerate}
+}
+
+\frame{
+\frametitle{Order Matters}
+
+Note that rolling a 1 on the red die and a 2 on the blue die, denoted \scalebox{0.7}{\maindie{1}{1}\maindie{2}{2}},
+
+is a different outcome than rolling a 2 on the red die and a 1 on the blue die, denoted \scalebox{0.7}{\maindie{2}{1}\maindie{1}{2}}.
+}
+
+
+\frame{
+\frametitle{Example: Sample Space}
+\noindent \textbf{Solution:}
+\noindent Although there are many patterns that could help us list all outcomes in the sample space, our pattern will be to start with keeping the red die at 1, and allowing the blue die to vary from 1 to 6. 
+}
+
+
+\frame{
+\frametitle{Example: Sample Space}
+\textbf{Solution:} There are six of these outcomes.\\\medskip
+
+\begin{tabular}{m{1.25in} m{2.45in}}
+
+\scalebox{0.75}{
+\begin{tabular}{cc}
+\maindie{1}{1} & \maindie{1}{2}\\
+\maindie{1}{1} & \maindie{2}{2}\\
+\maindie{1}{1} & \maindie{3}{2}\\
+\maindie{1}{1} & \maindie{4}{2}\\
+\maindie{1}{1} & \maindie{5}{2}\\
+\maindie{1}{1} & \maindie{6}{2}\\
+\end{tabular}
+}
+
+&
+\small
+Next we list all outcomes in which a 2 is rolled on the red die. 
+
+Again, there are six outcomes of this form. The pattern continues until all 36 outcomes are listed. 
+
+\\
+\end{tabular}
+
+}
+
+
+\frame{
+\frametitle{Example: Sample Space}
+
+So the sample space $=$ \\\bigskip
+
+\scalebox{0.58}{
+\begin{tabular}{| c | c | c | c | c | c |}
+\maindie{1}{1}\maindie{1}{2} & \maindie{1}{1}\maindie{2}{2} & \maindie{1}{1}\maindie{3}{2} & \maindie{1}{1}\maindie{4}{2} & \maindie{1}{1}\maindie{5}{2} & \maindie{1}{1}\maindie{6}{2} \\
+
+\maindie{2}{1}\maindie{1}{2} & \maindie{2}{1}\maindie{2}{2} & \maindie{2}{1}\maindie{3}{2} & \maindie{2}{1}\maindie{4}{2} & \maindie{2}{1}\maindie{5}{2} & \maindie{2}{1}\maindie{6}{2} \\
+
+\maindie{3}{1}\maindie{1}{2} & \maindie{3}{1}\maindie{2}{2} & \maindie{3}{1}\maindie{3}{2}  & \maindie{3}{1}\maindie{4}{2} & \maindie{3}{1}\maindie{5}{2} & \maindie{3}{1}\maindie{6}{2} \\
+
+\maindie{4}{1}\maindie{1}{2} & \maindie{4}{1}\maindie{2}{2} & \maindie{4}{1}\maindie{3}{2} & \maindie{4}{1}\maindie{4}{2} & \maindie{4}{1}\maindie{5}{2} & \maindie{4}{1}\maindie{6}{2} \\
+
+\maindie{5}{1}\maindie{1}{2} & \maindie{5}{1}\maindie{2}{2} & \maindie{5}{1}\maindie{3}{2} & \maindie{5}{1}\maindie{4}{2} & \maindie{5}{1}\maindie{5}{2} & \maindie{5}{1}\maindie{6}{2} \\
+
+\maindie{6}{1}\maindie{1}{2} & \maindie{6}{1}\maindie{2}{2} & \maindie{6}{1}\maindie{3}{2} & \maindie{6}{1}\maindie{4}{2} & \maindie{6}{1}\maindie{5}{2} & \maindie{6}{1}\maindie{6}{2} \\
+
+\end{tabular}
+}
+}
+
+
+\end{document}
