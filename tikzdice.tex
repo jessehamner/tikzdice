@@ -66,7 +66,9 @@
 					  \filldraw[fill=\pipcolor] (0.50,0.80) circle (\pipsize);
   					  \filldraw[fill=\pipcolor] (0.50,0.50) circle (\pipsize);
 					  \filldraw[fill=\pipcolor] (0.50,0.20) circle (\pipsize);}{}%	  
-					  
+    \ifthenelse{#1 = 0}{}{}%
+%    \ifthenelse{#1 = 0}{\draw[very thick, rounded corners, \diecolor, fill=\diecolor!20] (0,0) rectangle (1,1);}{}%  
+
 \end{tikzpicture}
 }
 
