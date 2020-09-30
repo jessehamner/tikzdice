@@ -15,6 +15,6 @@ I'm teaching a math/stats/decision-science class and I needed to make some examp
 <table>
   <tr><td border="1px"><img src="tikzdicebeamer.png" height="550px">
     </td>
-    <td> A screen capture showing the functionality of the function library.</td>
+    <td> A screen capture showing a few Beamer slides using the library.</td>
   </tr>
   </table>
