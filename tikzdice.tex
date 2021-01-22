@@ -8,6 +8,30 @@
 % https://github.com/jessehamner/tikzdice
 % 2020
 
+
+\usetikzlibrary{arrows}
+
+\tikzset{
+  treenode/.style = {align=center, text centered,
+    font=\sffamily},
+  arn_n/.style = {treenode, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},  
+  arn_r/.style = {treenode, text width=1.5em},
+  arn_x/.style = {treenode, minimum width=0.5em, minimum height=0.5em}
+}
+
+\newcommand{\majelaxis}{0.5}
+\newcommand{\minelaxis}{0.125}
+
+\newcommand{\headtext}{\color{red}\textbf{H}}
+
+\newcommand{\dieone}{\maindie{1}{0}}
+\newcommand{\dietwo}{\maindie{2}{0}}
+\newcommand{\diethree}{\maindie{3}{0}}
+\newcommand{\diefour}{\maindie{4}{0}}
+\newcommand{\diefive}{\maindie{5}{0}}
+\newcommand{\diesix}{\maindie{6}{0}}
+
 \newcommand{\pipsize}{3.05pt}
 \newcommand{\diecolor}{red}
 \newcommand{\pipcolor}{red}
@@ -54,9 +78,123 @@
 \end{tikzpicture}
 }
 
-\newcommand{\dieone}{\maindie{1}{0}}
-\newcommand{\dietwo}{\maindie{2}{0}}
-\newcommand{\diethree}{\maindie{3}{0}}
-\newcommand{\diefour}{\maindie{4}{0}}
-\newcommand{\diefive}{\maindie{5}{0}}
-\newcommand{\diesix}{\maindie{6}{0}}
+
+\pgfmathdeclarefunction{addone}{1}{
+  \pgfmathparse{#1 + \majelaxis}
+}
+
+\pgfmathdeclarefunction{addtwo}{1}{
+  \pgfmathparse{#1 + \majelaxis + \majelaxis}
+}
+
+\pgfmathdeclarefunction{addspace}{1}{
+  \pgfmathparse{#1 + 1.15}
+}
+
+
+\newcommand{\coin}[4]{
+  \pgfmathsetmacro{\argthree}{addone(#1)}
+  \pgfmathsetmacro{\argtwo}{addtwo(#1)}
+  
+  \shade[left color=white, right color=black]
+    ({\argthree},0mm) ellipse (\majelaxis cm and \minelaxis cm);
+  \shade[left color=white, right color=black]
+    ({#1},0mm) rectangle (\argtwo cm, 1mm);   
+
+  \draw({\argthree},0.5cm) node[color=blue, above]{#2};
+
+  \draw[fill=#4]({\argthree},1mm) ellipse (\majelaxis cm and \minelaxis cm); 
+  \draw ({#1},0mm) arc (180:360:\majelaxis cm and \minelaxis cm);
+  \draw({#1},0mm) -- ({#1}, 1mm);
+  \draw({\argtwo},0mm) -- ({\argtwo}, 1mm);
+  
+  \draw({\argthree},-0.4cm) node[color=black, below]{#3};
+}
+
+\newcommand{\heads}[2]{
+\coin{#1}{#2}{\headtext}{blue!50}
+}
+
+\newcommand{\tails}[2]{
+\coin{#1}{#2}{{\color{gray!70}T}}{white}
+}
+
+
+
+
+\newcommand{\wtf}{\theheadpos & \makecoinrow{} \\}
+
+\newcommand{\whichheads}{1}
+\newcounter{num}
+\setcounter{num}{1}
+\newcounter{headpos}
+\setcounter{headpos}{1}
+\newcounter{int}
+\setcounter{int}{1}
+
+
+% Row of coins, one head, slot #1.
+
+\newcommand{\makecoinrow}{
+  \setcounter{int}{1}
+
+  \begin{tikzpicture}[]
+    \newdimen\R
+    \R=0cm
+    
+    \loop
+      \ifthenelse{\value{int}=\value{headpos}}{\heads{\R}{}}{\tails{\R}{}} 
+      \pgfmathsetmacro{\R}{addspace(\R)}
+      \stepcounter{int}
+      \ifnum \value{int}<11
+    \repeat
+  
+  \end{tikzpicture}
+  
+  \smallskip
+}
+
+
+
+% Definition of circles and square
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(2,0) circle (1.5cm)}
+\def\firstsquare{(-1.6,-1.6) rectangle (1.6,1.6)}
+
+
+\def\missed{\LARGE\textbf{X}}
+\def\target{\begin{tikzpicture}
+  \draw[ultra thick, black, fill=blue!55] (0,0) circle(1cm);
+  \draw[fill=red!70] (0,0) circle(0.73cm);
+  \draw[fill=yellow] (0,0) circle(0.35cm) node{\small$\times$};
+\end{tikzpicture}}
+
+% Set colors
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+\colorlet{rectangle edge}{blue!50}
+\colorlet{rectangle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    	 outline/.style={draw=circle edge, thick}
+	    }
+\setlength{\parskip}{5mm}
+
+
+
+
+
+\def\missed{\LARGE\textbf{X}}
+\def\target{\begin{tikzpicture}
+  \draw[ultra thick, black, fill=blue!55] (0,0) circle(1cm);
+  \draw[fill=red!70] (0,0) circle(0.73cm);
+  \draw[fill=yellow] (0,0) circle(0.35cm) node{\small$\times$};
+\end{tikzpicture}}
+
+\tikzset{
+  treenode/.style = {align=center, text centered, font=\sffamily},
+  arn_n/.style = {treenode, font=\sffamily\bfseries, draw=black, fill=black},
+  arn_r/.style = {treenode},
+  arn_x/.style = {treenode}
+}
+
