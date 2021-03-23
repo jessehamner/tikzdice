@@ -178,9 +178,12 @@
 \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
     	 outline/.style={draw=circle edge, thick}
 	    }
-\setlength{\parskip}{5mm}
+% This line makes makes theorems and boxed environments align incorrectly (vertically) in Beamer, I suggest that you remove it
+% \setlength{\parskip}{5mm}
 
-
+% This command is a nice shortcut in my opinion that makes the dice aligned vertically when they're used with text or in math mode.
+% Possibly you want to use another (optional?) argument for the scalebox parameter to tune the size
+\newcommand\vcdice[2]{\vcenter{\hbox{\scalebox{0.4}{\maindie{#1}{#2}}}}}
 
 
 
